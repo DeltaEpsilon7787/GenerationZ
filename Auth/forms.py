@@ -5,13 +5,11 @@ from Users.models import GenerationUser
 class RegisterForm(RegistrationForm):
     class Meta(RegistrationForm.Meta):
         model = GenerationUser
-        fields = ['username', 'email', 'first_name', 'last_name', 'group', 'age', 'work_place']
+        fields = ['username', 'email', 'first_name', 'last_name', 'age', 'work_place']
         labels = {
-            "first_name": "Имя",
-            "last_name": "Фамилия",
-            "age": "Возраст",
-            "work_place": "Место работы / учёбы",
-            "group": "Группа"
+            "first_name": "First Name",
+            "last_name": "Last Name",
+            "age": "Age",
+            "work_place": "Work Place",
         }
 
-    privacy_policy_agreement = forms.BooleanField(label='Подтверждаю использование персональных данных')

@@ -1,5 +1,5 @@
 from django.contrib import admin
+from django.contrib.admin import ModelAdmin
 from .models import GenerationUser
 
-# Register your models here.
-admin.register(GenerationUser)
+admin.site.register(GenerationUser)

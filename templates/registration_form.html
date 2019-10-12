@@ -1,10 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
 {% load crispy_forms_tags %}
-{% load widget_tweaks %}
 {% block title %}Регистрация{% endblock %}
 
-{% block style %}
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 <style>
 	.container{
@@ -39,17 +37,16 @@
 	}
 	.btn-google {
 		color: #fff;
-		background-color: #db4e3f!important;
+		
+		background-color: #db4e3f;
 	}
 	.btn-google:hover {
-		background-color: #df6254!important;
+		background-color: #df6254;
 	}
 </style>
-{% endblock %}
-{% block header %}{% endblock %}
 {% block content %}
 	<div class="container">
-		<div class="d-flex justify-content-center h-100">
+		<div class="d-flex justify-content-center">
 			<div class="card">
 				<article class="card-body mx-auto" style="max-width: 400px;">
 					<h4 class="card-title mt-3 text-center w">Create Account</h4>
@@ -60,91 +57,67 @@
 					</p>
 					<p class="w text-center">OR</p>
 					</p>
-					<form method="POST" data-toggle="validator">
+					<form method="POST">
 						{% csrf_token %}
 						{{ form.errors }}
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fa fa-user"></i></span>
 							</div>
-							{% with field=form.username %}
-							{{ field.errors }}
-							{% render_field field class="form-control" placeholder=field.label %}
-							{% endwith %}
+							<input name="username" class="form-control" placeholder="Login" type="text">
 						</div>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fa fa-user"></i></span>
 							</div>
-							{% with field=form.first_name %}
-								{{ field.errors }}
-								{% render_field field class="form-control" placeholder=field.label %}
-							{% endwith %}
+							<input name="first_name" class="form-control" placeholder="Full name" type="text">
 						</div>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fa fa-user-circle"></i></span>
 							</div>
-							{% with field=form.last_name %}
-								{{ field.errors }}
-								{% render_field field class="form-control" placeholder=field.label %}
-							{% endwith %}
+							<input name="last_name" class="form-control" placeholder="Last name" type="text">
 						</div>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fa fa-envelope"></i></span>
 							</div>
-							{% with field=form.email %}
-								{{ field.errors }}
-								{% render_field field class="form-control" placeholder=field.label %}
-							{% endwith %}
+							<input name="email" class="form-control" placeholder="Email address" type="email">
 						</div>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fa fa-id-card"></i></span>
 							</div>
-							{% with field=form.age %}
-								{{ field.errors }}
-								{% render_field field class="form-control" placeholder=field.label %}
-							{% endwith %}
+							<input name="age" class="form-control" placeholder="Age" type="text">
 						</div>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fa fa-briefcase"></i></span>
 							</div>
-							{% with field=form.work_place %}
-								{{ field.errors }}
-								{% render_field field class="form-control" placeholder=field.label %}
-							{% endwith %}
+							<input name="work_place" class="form-control" placeholder="Study/Work place" type="text">
 						</div>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fa fa-lock"></i></span>
 							</div>
-							{% with field=form.password1 %}
-								{{ field.errors }}
-								{% render_field field class="form-control" placeholder=field.label %}
-							{% endwith %}
+							<input name="password1" class="form-control" placeholder="Create password" type="password">
 						</div>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fa fa-lock"></i></span>
 							</div>
-							{% with field=form.password2 %}
-								{{ field.errors }}
-								{% render_field field class="form-control" placeholder=field.label %}
-							{% endwith %}
+							<input name="password2" class="form-control" placeholder="Repeat password" type="password">
 						</div>
 						<div class="form-group input-group">
 							<div class="form-check form-check-inline">
-								<input name="privacy_policy_agreement" class="form-check-input" type="checkbox" id="inlineCheckbox" value="option">
+								<input name="privacy_policy_agreement" class="form-check-input" type="checkbox" id="inlineCheckbox" value="option" required>
 								<label class="form-check-label w" for="inlineCheckbox">I agree with the <a href="#">privacy policy</a></label>
 							</div>
 						</div>
 						<div class="form-group">
 							<button type="submit" class="btn btn-primary btn-block">Create Account</button>
 						</div>
-						<p class="text-center w">Have an account?<a href="/auth/login">Log In</a></p>  
+						<p class="text-center w">Have an account?<a href="#">Log In</a></p>  
 					</form>
 				</article>
 			</div>

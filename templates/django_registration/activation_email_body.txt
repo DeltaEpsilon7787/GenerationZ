@@ -1,2 +1,2 @@
 На ваш E-mail была попытка регистрации на Поколении Z. Если вы не знаете о чем идет речь, игнорируйте это письмо.
-В ином случае, пройдите по {{ activation_key }} в течение {{ expiration_days }}.
+В ином случае, пройдите по http://tatarmember:9000/auth/activate/{{ activation_key }} в течение {{ expiration_days }} дней.
