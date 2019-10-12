@@ -68,8 +68,8 @@
 								<span class="input-group-text"><i class="fa fa-user"></i></span>
 							</div>
 							{% with field=form.username %}
-							{{ field.errors }}
-							{% render_field field class="form-control" placeholder=field.label %}
+								{{ field.errors }}
+								{% render_field field class="form-control" placeholder=field.label %}
 							{% endwith %}
 						</div>
 						<div class="form-group input-group">
