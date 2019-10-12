@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}Регистрация{% endblock %}
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+<style>
+	.container{
+		height: 100%;
+		align-content: center;
+	}
+
+	.card{
+		margin-top: auto;
+		margin-bottom: auto;
+		width: 400px;
+		background-color: rgba(0,0,0,0.5) !important;
+	}
+
+	@import url('https://fonts.googleapis.com/css?family=Numans');
+
+	html,body{
+		background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
+		background-size: cover;
+		background-repeat: no-repeat;
+		height: 100%;
+		font-family: 'Numans', sans-serif;
+	}
+	.w {
+		color: white;
+	}
+	.input-group-prepend span{
+		width: 50px;
+		background-color: #FFC312;
+		color: black;
+		border:0 !important;
+	}
+</style>
+{% block content %}
+	<div class="container">
+		<div class="d-flex justify-content-center">
+			<div class="card">
+				<article class="card-body mx-auto" style="max-width: 400px;">
+					<h4 class="card-title mt-3 text-center w">Create Account</h4>
+					<p class="text-center w">Get started with your account</p>
+					<p>
+						<a href="#" class="btn btn-block" style="background-color: #405D9D; color: #fff;"><i class="fab fa-vk pr-1"></i>Login via VK</a>
+						<a href="#" class="btn btn-block btn-google" style="background-color: red; color: #fff;"><i class="fab fa-google pr-1"></i> Login via google</a>
+					</p>
+					<p class="w text-center">OR</p>
+					</p>
+					<form action="/auth/register/" method="POST">
+						{% csrf_token %}
+						{{ form.errors.password1 }}
+						<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fa fa-user"></i></span>
+							</div>
+							<input name="username" class="form-control" placeholder="Login" type="text">
+						</div>
+						<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fa fa-user"></i></span>
+							</div>
+							<input name="first_name" class="form-control" placeholder="Full name" type="text">
+						</div>
+						<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fa fa-user-circle"></i></span>
+							</div>
+							<input name="last_name" class="form-control" placeholder="Last name" type="text">
+						</div>
+						<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fa fa-envelope"></i></span>
+							</div>
+							<input name="email" class="form-control" placeholder="Email address" type="email">
+						</div>
+						<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fa fa-id-card"></i></span>
+							</div>
+							<input name="age" class="form-control" placeholder="Age" type="text">
+						</div>
+						<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fa fa-briefcase"></i></span>
+							</div>
+							<input name="work_place" class="form-control" placeholder="Study/Work place" type="text">
+						</div>
+						<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fa fa-lock"></i></span>
+							</div>
+							<input name="password1" class="form-control" placeholder="Create password" type="password">
+						</div>
+						<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fa fa-lock"></i></span>
+							</div>
+							<input name="password2" class="form-control" placeholder="Repeat password" type="password">
+						</div>
+						<div class="form-group input-group">
+							<div class="form-check form-check-inline">
+								<input name="privacy_policy_agreement" class="form-check-input" type="checkbox" id="inlineCheckbox" value="option">
+								<label class="form-check-label w" for="inlineCheckbox">I agree with the <a href="#">privacy policy</a></label>
+							</div>
+						</div>
+						<div class="form-group">
+							<button type="submit" class="btn btn-primary btn-block">Create Account</button>
+						</div>
+						<p class="text-center w">Have an account?<a href="#">Log In</a></p>  
+					</form>
+				</article>
+			</div>
+		</div>
+	</div>
+{% endblock %}

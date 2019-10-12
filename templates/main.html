@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{{ static_url("./css/style.scss") }}">
+    <link rel="stylesheet" href="{{ static_url("./css/uikit.css") }}">
+    <title>Поколение Z</title>
+  </head>
+  <body>
+    <div class="uk-grid">
+        <div class="uk-heading-medium uk-heading-divider uk-width-1-2">Поколение Z</div>
+        <div class="uk-width-1-2">
+            <nav class="uk-navbar-container">
+                <div class="uk-navbar-left">
+                    <ul class="uk-navbar-nav">
+                        <li class="uk-parent"><a href="/registration">Регистрация</a></li>
+                        <li class="uk-active"><a href="/">Главная страница</a></li>
+                        <li class="uk-parent"><a href="/aboutus">О нас</a></li>
+                        <li class="uk-parent"><a href="/personalarea">Личный кабинет</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2 class='title'>Профиль {{ user.username }}</h2>
+        </div>
+        <div class="col-12">
+          <div class="row">
+            <div class="col-6">
+              <div class='list'>
+                <div class="item">Имя: {{ user. }}</div>
+                <div class="item">Фамилия: {{ user. }}</div>
+                <div class="item">Возраст: {{ user. }}</div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class='list'>
+                <div class="item">Место учебы: {{ user. }}</div>
+                <div class="item">Почта: {{ user. }}</div>
+                <div class="item">Номер группы: {{ user. }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <h2 class='title'>Задания</h2>
+        </div>
+        <div class="col-12">
+          <div class="row list-tasks">
+            <div class="col-12 task">
+              <div class="row">
+                <div class="col-4 name-task">
+                  <h3>Название задания</h3>
+                </div>
+                <div class="col-4 period">
+                  <div class="begin">Начало: { task.start }</div>
+                  <div class="end">Конец: { task.end }</div>
+                </div>
+                <div class="col-4 status">
+                  <div class="dot"></div>
+                  <span class="text-status"></span>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 task">
+              <div class="row">
+                <div class="col-4 name-task">
+                  <h3>Название задания</h3>
+                </div>
+                <div class="col-4 period">
+                  <div class="begin">Начало: { task.start }</div>
+                  <div class="end">Конец: { task.end }</div>
+                </div>
+                <div class="col-4 status">
+                  <div class="dot"></div>
+                  <span class="text-status"></span>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 task">
+              <div class="row">
+                <div class="col-4 name-task">
+                  <h3>Название задания</h3>
+                </div>
+                <div class="col-4 period">
+                  <div class="begin">Начало: { task.start }</div>
+                  <div class="end">Конец: { task.end }</div>
+                </div>
+                <div class="col-4 status">
+                  <div class="dot"></div>
+                  <span class="text-status"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- не ебу где этот ваш бутстрап, сами подключите -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="{{ static_url("./js/uikit.min.js") }}"></script>
+    <script src="{{ static_url("./js/uikit-icons.min.js") }}"></script>
+    <script src="{{ static_url("./js/scripts.js") }}"></script>
+  </body>
+</html>
