@@ -1,13 +1,35 @@
-header {
-  border: 1px solid red;
+.container{
+  height: 100%;
+  align-content: center;
 }
 
-footer {
-  border: 2px solid black;
+.card{
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 400px;
+  background-color: rgba(0,0,0,0.5) !important;
 }
 
-body {
-  border: 1px solid yellow;
-}
+@import url('https://fonts.googleapis.com/css?family=Numans');
 
+html,body{
+  background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-family: 'Numans', sans-serif;
+}
+.w {
+  color: white;
+}
+.input-group-prepend span{
+  width: 50px;
+  background-color: #FFC312;
+  color: black;
+  border:0 !important;
+}
+.btn-google {
+  color: #fff;
+  background-color: #db4e3f!important;
+}
 /*# sourceMappingURL=style.css.map */

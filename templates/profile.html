@@ -4,25 +4,165 @@
 
 {% block title %}Профиль {{ user.username }} {% endblock %}
 {% block content %}
-Имя: {{ user.first_name }}
-Фамилия: {{ user.last_name }}
-E-Mail: {{ user.email }}
-Возраст: {{ user.age }}
-Группа: {{ user.group }}
+    <style>
+        .w {
+            color:white;
+        }
+        .task-list table tbody {
+            background: #fff;
+        }
+        .empty.circular.label {
+                min-width: 0;
+                min-height: 0;
+                overflow: hidden;
+                width: .5em;
+                height: .5em;
+                vertical-align: baseline;
+                line-height: 1em;
+        }
+        .circular.label {
+            border-radius: 500rem;
+        }
+        .label.overdue {
+            background-color: #FF3636;
+        }
+        .label.done {
+            background-color: #259B39;
+        }
+        .label.inprocess {
+            background-color: #146FE6;
+        }
+		.task-list .name{
+			min-width: 200px;
+		}
+		.task-list .date{
+			min-width: 160px;
+		}
+		.task-list .status{
+			min-width: 140px;
+		}
+        .task-list table td > div {
+            cursor: pointer;
+        }
+    </style>
+    <header>
+        
+    </header>
+    <div class="container m-0">
+        <div class="p-2">
+            <h2 class="w">Профиль {{ user.username }}</h2>
+            <div class="list-user-info d-flex flex-wrap">
+                <div class="list-user-info-item col-6 w">Имя: {{ user.first_name }}</div>
+                <div class="list-user-info-item col-6 w">Фамилия: {{ user.last_name }}</div>
+                <div class="list-user-info-item col-6 w">Возраст: {{ user.age }}</div>
+                <div class="list-user-info-item col-6 w">Место работы: {{ user.work_place }}</div>
+                <div class="list-user-info-item col-6 w">Почта: {{ user.email }}</div>
+            </div>
+        </div>
+        <div class="p-2 ">
+            <h2 class="pb-3 w">Задачи</h2>
+            <div class="task-list">
+                {% if not tasks %}
+                    Задач нет.
+                {% else %}
+                <!-- <form enctype="multipart/form-data" action=""></form> -->
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <tbody>
+                                {% for task in tasks %}
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center" data-toggle="modal" data-target="#taskModal" data-task-name="{{ task.name }}" data-task-description="{{ task.description }}">
+                                                <div class="px-2 h5 name col-5">{{ task.desc }}</div>
+                                                <div class="px-2 date col-4">
+                                                    <div class="end">Конец: {{ task.deadline }}</div>
+                                                    {% if task.is_complete %}
+                                                        <div class="end">Выполнено: {{ task.done_on }}</div>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="px-2 col-3 status d-inline-flex flex-nowrap align-items-center">
+                                                    {% if task.is_complete %}
+                                                        <span class="done empty circular label"></span>
+                                                        <span class="pl-1">выполнено</span>
+                                                    {% elif task.is_outdated %}
+                                                        <span class="overdue empty circular label"></span>
+                                                        <span class="pl-1">просроченно</span>
+                                                    {% else %}
+                                                        <span class="inprocess empty circular label"></span>
+                                                        <span class="pl-1">выполняется</span>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Название задачи</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="description mb-3">
+                    Containers are the most basic layout element in Bootstrap and are required when using our default grid system. Choose from a responsive, fixed-width container (meaning its max-width changes at each breakpoint) or fluid-width (meaning it’s 100% wide all the time).
+                </div>
+                <form id=taskFileUploader>
+                    <div class="form-group">
+                    <input type="hidden" id="taskId">
+                    <label for="taskFileLabel">Прикрепите файл для сдачи задания: </label>
+                    <input type="file" class="form-control-file" id="taskFile">
+                    </div>
+                    <button type="submit" class="btn btn-primary float-right" disabled>Отправить</button>
+                </form>
+            </div>
+            </div>
+        </div>
+        </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+          $('input:file').change(
+            function(){
+              if ($(this).val()) {
+                $('#taskFileUploader button:submit').removeAttr('disabled');
+              } else {
+                $('#taskFileUploader button:submit').attr('disabled', true);
+              }
+            }
+          );
+          $('#taskModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var name = button.data('task-name');
+            var description = button.data('task-description');
+            var modal = $(this)
+            modal.find('.modal-title').text('Задача ' + name)
+            modal.find('.modal-body .description').text(description)
+            modal.find('#taskId').attr("value", name)
+          })
+        });
+      </script>
 {% endblock %}
 
-        <!--
-    Личный кабинет.
-        Поля:
-            Фотка участника
-            Имя
-            Фамилия
-            Возраст
-            Место учёбы
-            Почта
-            Пароль
-            Номер группы
-    Насчёт квестов:
-    1)Тут короче несколько курсов и в каждом курсе есть квесты. 
-    Так что разворачивающиеся списки думаю с картинками и текстом хватит. Также статус выполнения.
-    -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" nonce="768a04d2c9124ac9954c6c90f27" src="//local.adguard.org?ts=1572063109954&amp;type=content-script&amp;dmn=cdn.discordapp.com&amp;css=1&amp;js=1&amp;gcss=1&amp;rel=1&amp;rji=1"></script>
+<script type="text/javascript" nonce="768a04d2c9124ac9954c6c90f27" src="//local.adguard.org?ts=1572063109954&amp;name=AdGuard%20Popup%20Blocker&amp;name=AdGuard%20Assistant&amp;name=AdGuard%20Extra&amp;type=user-script"></script><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Профиль &ndash; *подставить никнейм*</title>
+</head>
+<body>
+
+</html>

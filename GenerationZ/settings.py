@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'Users',
     "Auth",
     "Profile",
+    'Tasks'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -138,12 +139,14 @@ STATICFILES_DIRS = [
 
 ACCOUNT_ACTIVATION_DAYS = 7
 
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_HOST_PORT = 465
-# EMAIL_HOST_USER = 'scrapebot.test@gmail.com'
-# EMAIL_HOST_PASSWORD = 'alpha_beta'
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_PORT = 465
+EMAIL_HOST_USER = 'scrapebot.test@gmail.com'
+EMAIL_HOST_PASSWORD = 'alpha_beta'
+EMAIL_USE_TLS = True
 
-EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = './blyat' # change this to a proper location
 
 AUTH_USER_MODEL = "Users.GenerationUser"

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Профиль {{ user.username }} {% endblock %}
+{% block content %}
+Имя: {{ user.first_name }}<br>
+Фамилия: {{ user.last_name }}<br>
+E-Mail: {{ user.email }}<br>
+Возраст: {{ user.age }}<br>
+
+{% for task in tasks %}
+    <div>
+        {{ task.desc }} @ {{ task.deadline }} @ {{ task.done_on }} @ {{ task.is_complete }} @ {{ task.is_outdated }} @ {{ task.done_on }}
+    </div>
+{% endfor %}
+{% endblock %}
+
+        <!--
+    Личный кабинет.
+        Поля:
+            Фотка участника
+            Имя
+            Фамилия
+            Возраст
+            Место учёбы
+            Почта
+            Пароль
+            Номер группы
+    Насчёт квестов:
+    1) Квесты. Статус их выполнения. ВСЕ БЛЯДЬ. Не надо изобретать большего, пока сир путешественник не сказал, хули ему надо
+    -->

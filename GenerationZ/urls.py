@@ -27,8 +27,8 @@ import Profile.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'^auth/register/$', RegistrationView.as_view(form_class=RegisterForm), name='django_registration_register'),
-    re_path(r'^auth/', include('django_registration.backends.activation.urls')),
     re_path(r'^auth/login/$', auth_views.LoginView.as_view(template_name='auth.html', )),
+    re_path(r'^auth/', include('django_registration.backends.activation.urls')),
     re_path(r'^auth/', include('django.contrib.auth.urls')),
     re_path(r'^accounts/profile/$', Profile.views.profile_view),
 ]

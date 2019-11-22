@@ -4,48 +4,6 @@
 {% load widget_tweaks %}
 {% block title %}Регистрация{% endblock %}
 
-{% block style %}
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-<style>
-	.container{
-		height: 100%;
-		align-content: center;
-	}
-
-	.card{
-		margin-top: auto;
-		margin-bottom: auto;
-		width: 400px;
-		background-color: rgba(0,0,0,0.5) !important;
-	}
-
-	@import url('https://fonts.googleapis.com/css?family=Numans');
-
-	html,body{
-		background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
-		background-size: cover;
-		background-repeat: no-repeat;
-		height: 100%;
-		font-family: 'Numans', sans-serif;
-	}
-	.w {
-		color: white;
-	}
-	.input-group-prepend span{
-		width: 50px;
-		background-color: #FFC312;
-		color: black;
-		border:0 !important;
-	}
-	.btn-google {
-		color: #fff;
-		background-color: #db4e3f!important;
-	}
-	.btn-google:hover {
-		background-color: #df6254!important;
-	}
-</style>
-{% endblock %}
 {% block header %}{% endblock %}
 {% block content %}
 	<div class="container">
@@ -60,79 +18,134 @@
 					</p>
 					<p class="w text-center">OR</p>
 					</p>
-					<form method="POST" data-toggle="validator">
+					<form method="POST" class="needs-validation" novalidate>
 						{% csrf_token %}
-						{{ form.errors }}
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fa fa-user"></i></span>
 							</div>
-							{% with field=form.username %}
-								{{ field.errors }}
-								{% render_field field class="form-control" placeholder=field.label %}
+							{% with WIDGET_ERROR_CLASS='is-invalid' WIDGET_REQUIRED_CLASS='form-control' field=form.username %}
+								{% render_field field placeholder=field.label required=on %}
+								<div class="invalid-feedback">
+									{% for error in field.errors %}
+										<span class="error-message">{{ error }}</span>
+										{% if not forloop.first %}
+											<br>
+										{% endif %}
+									{% endfor %}
+								</div>
 							{% endwith %}
 						</div>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fa fa-user"></i></span>
 							</div>
-							{% with field=form.first_name %}
-								{{ field.errors }}
-								{% render_field field class="form-control" placeholder=field.label %}
+							{% with WIDGET_ERROR_CLASS='is-invalid' WIDGET_REQUIRED_CLASS='form-control' field=form.first_name %}
+								{% render_field field class="form-control" placeholder=field.label required=on %}
+								<div class="invalid-feedback">
+									{% for error in field.errors %}
+										<span class="error-message">{{ error }}</span>
+										{% if not forloop.first %}
+											<br>
+										{% endif %}
+									{% endfor %}
+								</div>
 							{% endwith %}
 						</div>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fa fa-user-circle"></i></span>
 							</div>
-							{% with field=form.last_name %}
-								{{ field.errors }}
-								{% render_field field class="form-control" placeholder=field.label %}
+							{% with WIDGET_ERROR_CLASS='is-invalid' WIDGET_REQUIRED_CLASS='form-control' field=form.last_name %}
+								{% render_field field class="form-control" placeholder=field.label required=on %}
+								<div class="invalid-feedback">
+									{% for error in field.errors %}
+										<span class="error-message">{{ error }}</span>
+										{% if not forloop.first %}
+											<br>
+										{% endif %}
+									{% endfor %}
+								</div>
 							{% endwith %}
 						</div>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fa fa-envelope"></i></span>
 							</div>
-							{% with field=form.email %}
-								{{ field.errors }}
-								{% render_field field class="form-control" placeholder=field.label %}
+							{% with WIDGET_ERROR_CLASS='is-invalid' WIDGET_REQUIRED_CLASS='form-control' field=form.email %}
+								{% render_field field class="form-control" placeholder=field.label required=on %}
+								<div class="invalid-feedback">
+									{% for error in field.errors %}
+										<span class="error-message">{{ error }}</span>
+										{% if not forloop.first %}
+											<br>
+										{% endif %}
+									{% endfor %}
+								</div>
 							{% endwith %}
 						</div>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fa fa-id-card"></i></span>
 							</div>
-							{% with field=form.age %}
-								{{ field.errors }}
-								{% render_field field class="form-control" placeholder=field.label %}
+							{% with WIDGET_ERROR_CLASS='is-invalid' WIDGET_REQUIRED_CLASS='form-control' field=form.age %}
+								{% render_field field class="form-control" placeholder=field.label required=on %}
+								<div class="invalid-feedback">
+									{% for error in field.errors %}
+										<span class="error-message">{{ error }}</span>
+										{% if not forloop.first %}
+											<br>
+										{% endif %}
+									{% endfor %}
+								</div>
 							{% endwith %}
 						</div>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fa fa-briefcase"></i></span>
 							</div>
-							{% with field=form.work_place %}
-								{{ field.errors }}
-								{% render_field field class="form-control" placeholder=field.label %}
+							{% with WIDGET_ERROR_CLASS='is-invalid' WIDGET_REQUIRED_CLASS='form-control' field=form.work_place %}
+								{% render_field field class="form-control" placeholder=field.label required=on %}
+								<div class="invalid-feedback">
+									{% for error in field.errors %}
+										<span class="error-message">{{ error }}</span>
+										{% if not forloop.first %}
+											<br>
+										{% endif %}
+									{% endfor %}
+								</div>
 							{% endwith %}
 						</div>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fa fa-lock"></i></span>
 							</div>
-							{% with field=form.password1 %}
-								{{ field.errors }}
-								{% render_field field class="form-control" placeholder=field.label %}
+							{% with WIDGET_ERROR_CLASS='is-invalid' WIDGET_REQUIRED_CLASS='form-control' field=form.password1 %}
+								{% render_field field class="form-control" placeholder=field.label required=on %}
+								<div class="invalid-feedback">
+									{% for error in field.errors %}
+										<span class="error-message">{{ error }}</span>
+										{% if not forloop.first %}
+											<br>
+										{% endif %}
+									{% endfor %}
+								</div>
 							{% endwith %}
 						</div>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fa fa-lock"></i></span>
 							</div>
-							{% with field=form.password2 %}
-								{{ field.errors }}
-								{% render_field field class="form-control" placeholder=field.label %}
+							{% with WIDGET_ERROR_CLASS='is-invalid' WIDGET_REQUIRED_CLASS='form-control' field=form.password2 %}
+								{% render_field field class="form-control" placeholder=field.label required=on %}
+								<div class="invalid-feedback">
+									{% for error in field.errors %}
+										<span class="error-message">{{ error }}</span>
+										{% if not forloop.last %}
+											<br>
+										{% endif %}
+									{% endfor %}
+								</div>
 							{% endwith %}
 						</div>
 						<div class="form-group input-group">

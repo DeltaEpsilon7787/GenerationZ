@@ -1,3 +1,6 @@
+{% load static %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,27 +24,27 @@
 		}
 	
 		.container{
-		height: 100%;
-		align-content: center;
+			height: 100%;
+			align-content: center;
 		}
 
 		.card{
-		height: 370px;
-		margin-top: auto;
-		margin-bottom: auto;
-		width: 400px;
-		background-color: rgba(0,0,0,0.5) !important;
+			height: 370px;
+			margin-top: auto;
+			margin-bottom: auto;
+			width: 400px;
+			background-color: rgba(0,0,0,0.5) !important;
 		}
 
 		.social_icon span{
-		font-size: 60px;
-		margin-left: 10px;
-		color: #FFC312;
+			font-size: 60px;
+			margin-left: 10px;
+			color: #FFC312;
 		}
 
 		.social_icon span:hover{
-		color: white;
-		cursor: pointer;
+			color: white;
+			cursor: pointer;
 		}
 
 		.w {
@@ -49,42 +52,42 @@
 		}
 
 		.social_icon{
-		position: absolute;
-		right: 20px;
-		top: -45px;
+			position: absolute;
+			right: 20px;
+			top: -45px;
 		}
 
 		.input-group-prepend span{
-		width: 50px;
-		background-color: #FFC312;
-		color: black;
-		border:0 !important;
+			width: 50px;
+			background-color: #FFC312;
+			color: black;
+			border:0 !important;
 		}
 
 		input:focus{
-		outline: 0 0 0 0  !important;
-		box-shadow: 0 0 0 0 !important;
+			outline: 0 0 0 0  !important;
+			box-shadow: 0 0 0 0 !important;
 		}
 
 		.remember input
 		{
-		width: 20px;
-		height: 20px;
-		margin-left: 15px;
-		margin-right: 5px;
+			width: 20px;
+			height: 20px;
+			margin-left: 15px;
+			margin-right: 5px;
 		}
 
 		.login_btn{
-		width: 100px;
+			width: 100px;
 		}
 
 		.login_btn:hover{
-		color: black;
-		background-color: white;
+			color: black;
+			background-color: white;
 		}
 
-		.links a{
-		margin-left: 4px;
+		.links a {
+			margin-left: 4px;
 		}
     </style>
 </head>
@@ -102,20 +105,41 @@
 			<div class="card-body">
 				<form method="POST">
 					{% csrf_token %}
+					{{ form.errors.code }}
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
-						<input type="text" class="form-control" placeholder="username" name="username">
+						{% with WIDGET_ERROR_CLASS='is-invalid' WIDGET_REQUIRED_CLASS='form-control' field=form.username %}
+							{% render_field field placeholder=field.label required=on %}
+							<div class="invalid-feedback">
+								{% for error in field.errors %}
+									<span class="error-message">{{ error }}</span>
+									{% if not forloop.first %}
+										<br>
+									{% endif %}
+								{% endfor %}
+							</div>
+						{% endwith %}
 					</div>
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
 						</div>
-						<input type="password" class="form-control" placeholder="password" name="password">
+						{% with WIDGET_ERROR_CLASS='is-invalid' WIDGET_REQUIRED_CLASS='form-control' field=form.password %}
+							{% render_field field placeholder=field.label required=on %}
+							<div class="invalid-feedback">
+								{% for error in field.errors %}
+									<span class="error-message">{{ error }}</span>
+									{% if not forloop.first %}
+										<br>
+									{% endif %}
+								{% endfor %}
+							</div>
+						{% endwith %}
 					</div>
 					<div class="row align-items-center remember w">
-						<input type="checkbox">Remember Me
+						<input type="checkbox" name="remember_me">Remember Me
 					</div>
 					<div class="form-group">
 						<input type="submit" value="Login" class="btn float-right login_btn btn-primary">
@@ -124,7 +148,7 @@
 			</div>
 			<div class="card-footer">
 				<div class="d-flex justify-content-center links w">
-					Don't have an account?<a href="#">Sign Up</a>
+					Don't have an account?<a href="/auth/register">Sign Up</a>
 				</div>
 				<div class="d-flex justify-content-center w">
 					<a href="#">Forgot your password?</a>
