@@ -5,7 +5,8 @@ from .models import TaskMessage
 class MessageForm(forms.ModelForm):
     class Meta:
         model = TaskMessage
-        fields = '__all__'
+        fields = ['task', 'attached', 'message']
+        exclude = ['user']
         widgets = {
             'task': forms.HiddenInput()
         }

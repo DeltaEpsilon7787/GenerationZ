@@ -28,7 +28,8 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '31.25.28.126',
     '192.168.1.56',
-    'tatarmember.ddns.net'
+    'tatarmember.ddns.net',
+    'localhost'
 ]
 
 

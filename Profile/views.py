@@ -1,7 +1,7 @@
 from datetime import datetime
 from json import dumps
 
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseNotFound, HttpResponse
 from django.core.serializers import serialize
 from django.shortcuts import render
 from django.contrib.auth import get_user
@@ -27,6 +27,7 @@ def profile_view(request):
         'tasks': [
             {
                 'task': task,
+                'task_key': task.pk,
                 'name': task.name,
                 'desc': task.description,
                 'deadline': task.deadline,
@@ -39,15 +40,22 @@ def profile_view(request):
     })
 
 @login_required
-def message_upload(request, task=None):
+def message_upload(request):
+    user = get_user(request)
     if request.method == 'POST':
         form = MessageForm(request.POST, request.FILES)
         if form.is_valid():
-            
-            TaskMessage(task=form.task, message=form.message, attached=form.attached)
-    else:
-        form = MessageForm()
-    return render(request, 'upload.html', {
-        'form': form,
-        'task': task
-    })
+            TaskMessage(
+                user=user,
+                task=form.cleaned_data['task'],
+                message=form.cleaned_data['message'],
+                attached=form.cleaned_data['attached']
+            ).save()
+            return JsonResponse({
+                'is_success': True
+            }, status=200)
+        else:
+            return JsonResponse({
+                'is_success': False,
+                'reasons': form.errors
+            }, status=400)

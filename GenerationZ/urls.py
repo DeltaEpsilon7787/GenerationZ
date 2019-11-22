@@ -31,4 +31,5 @@ urlpatterns = [
     re_path(r'^auth/', include('django_registration.backends.activation.urls')),
     re_path(r'^auth/', include('django.contrib.auth.urls')),
     re_path(r'^accounts/profile/$', Profile.views.profile_view),
+    re_path(r'^accounts/message/$', Profile.views.message_upload, name='message')
 ]

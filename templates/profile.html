@@ -72,7 +72,7 @@
                                 {% for task in tasks %}
                                     <tr>
                                         <td>
-                                            <div class="d-flex align-items-center" data-toggle="modal" data-target="#taskModal" data-task-name="{{ task.name }}" data-task-description="{{ task.description }}">
+                                            <div class="d-flex align-items-center" data-toggle="modal" data-target="#taskModal" data-task-name="{{ task.name }}" data-task-description="{{ task.description }}" data-task-key="{{ task.task_key }}">
                                                 <div class="px-2 h5 name col-5">{{ task.desc }}</div>
                                                 <div class="px-2 date col-4">
                                                     <div class="end">Конец: {{ task.deadline }}</div>
@@ -116,13 +116,16 @@
                 <div class="description mb-3">
                     Containers are the most basic layout element in Bootstrap and are required when using our default grid system. Choose from a responsive, fixed-width container (meaning its max-width changes at each breakpoint) or fluid-width (meaning it’s 100% wide all the time).
                 </div>
-                <form id=taskFileUploader>
+                <form id="task_message_form" method="POST" action="{% url 'message' %}">
                     <div class="form-group">
-                    <input type="hidden" id="taskId">
-                    <label for="taskFileLabel">Прикрепите файл для сдачи задания: </label>
-                    <input type="file" class="form-control-file" id="taskFile">
+                        {% csrf_token %}
+                        <input type="hidden" name="task">
+                        <label for="attached">Прикрепите файл для сдачи задания: </label>
+                        <input type="file" class="form-control-file" name="attached">
+                        <label for="message">Сообщение: </label>
+                        <input type="textbox" class="form-control textbox" name="message">
                     </div>
-                    <button type="submit" class="btn btn-primary float-right" disabled>Отправить</button>
+                    <button type="submit" class="btn btn-primary float-right">Отправить</button>
                 </form>
             </div>
             </div>
@@ -142,12 +145,28 @@
           );
           $('#taskModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
+            var task_key = button.data('task-key');
             var name = button.data('task-name');
             var description = button.data('task-description');
             var modal = $(this)
             modal.find('.modal-title').text('Задача ' + name)
             modal.find('.modal-body .description').text(description)
-            modal.find('#taskId').attr("value", name)
+            modal.find('[name=task]').attr("value", task_key)
+          });
+          $('#task_message_form').submit(function (e) {
+              e.preventDefault();
+              var data = $('.form-group > input', this).serialize();
+              $.ajax({
+                  type: 'POST',
+                  url: "{% url 'message' %}",
+                  data: data,
+                  success: function(resp) {
+                      $('#taskModal').modal('hide');
+                    },
+                  error: function(resp) {
+                      alert(resp['reasons'].join("<br>"));
+                  }
+              })
           })
         });
       </script>
