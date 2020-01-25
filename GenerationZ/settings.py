@@ -26,6 +26,7 @@ SECRET_KEY = '+zv$41o1-#z_n_f%q)rx(=0ycljnz)s!fr5-v=*32q$aa$1dvb'
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    'localhost',
     '31.25.28.126',
     '192.168.1.56',
     'tatarmember.ddns.net'
@@ -43,9 +44,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'widget_tweaks',
     'crispy_forms',
+    'HomePage',
     'Users',
-    "Auth",
-    "Profile",
+    'Auth',
+    'Profile',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -138,14 +140,14 @@ STATICFILES_DIRS = [
 
 ACCOUNT_ACTIVATION_DAYS = 7
 
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_HOST_PORT = 465
-# EMAIL_HOST_USER = 'scrapebot.test@gmail.com'
-# EMAIL_HOST_PASSWORD = 'alpha_beta'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_PORT = 465
+EMAIL_HOST_USER = 'scrapebot.test@gmail.com'
+EMAIL_HOST_PASSWORD = 'alpha_beta'
 
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = './blyat' # change this to a proper location
 
 AUTH_USER_MODEL = "Users.GenerationUser"
-LOGIN_REDIRECT_URL = '/accounts/profile/'
+LOGIN_REDIRECT_URL = '/profile/'
 LOGIN_URL = '/auth/login/'

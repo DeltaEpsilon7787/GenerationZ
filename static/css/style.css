@@ -1,13 +1,245 @@
-header {
-  border: 1px solid red;
-}
-
-footer {
-  border: 2px solid black;
-}
-
 body {
-  border: 1px solid yellow;
+	overflow-x: hidden;
+	position: relative;
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-size: 13px;
+	line-height: 20px;
+	color: #666;
+	background-color:#fff;
 }
 
-/*# sourceMappingURL=style.css.map */
+.preloader_hide {
+    opacity: 0px;
+}
+
+#preloader {
+    position: fixed; 
+    left: 50%; 
+    top: 50%; 
+    width: 32px; 
+    height: 32px; 
+    margin: -16px 0px 0px -16px; 
+    display: block;
+}
+
+#page {
+    overflow-x: hidden; 
+    position: relative; 
+    z-index: 5;
+}
+
+header {
+	position: relative;
+	height: 80px;
+	background-color:#fff;
+}
+
+.menu_block {
+	position: fixed;
+	z-index: 9999;
+	left: 0;
+	top: 0;
+	right:0;
+	height:80px;
+	width:100%;
+	background-color:#fff;
+	box-shadow:0 2px 3px rgba(0,0,0,0.1);
+}
+
+.container {
+    padding-left: 0px; 
+    padding-right: 0px;
+}
+
+.logo {
+    float: left;
+}
+
+.logo a {
+	text-transform: uppercase;
+	line-height: 80px;
+	font-size: 26px;
+	color:#333;
+}
+
+.logo a span {
+	display: inline-block;
+	padding-right: 8px;
+}
+
+.logo a span.b1 {font-weight:900;}
+.logo a span.b2 {font-weight:700;}
+.logo a span.b3 {font-weight:400;}
+.logo a span.b4 {font-weight:300;}
+.logo a span.b5 {font-weight:100;}
+
+.navmenu ul li {
+	position: relative;
+	display: inline-block;
+}
+
+.navmenu ul li a {
+	display: block;
+	margin: 0px 0px 0px -3px;
+	padding: 30px 20px;
+	text-transform: uppercase;
+	font-weight: 900;
+	line-height: 20px;
+	font-size: 13px;
+	color:#666;
+	transition: all 0.3s ease-in-out; 
+	-webkit-transition: all 0.3s ease-in-out;
+}
+.navmenu li:hover a,
+.navmenu li.active a {
+	color:#333;
+}
+
+.pb-0 {
+    padding-bottom:0 !important;
+}
+
+#home {
+    position: relative;
+}
+
+#about {
+	padding-top: 70px;
+	margin-top: 55px;
+}
+
+.header {
+	line-height: 30px;
+	margin: 0 0 68px;
+}
+
+.title {
+	color: #636363;
+	display: block;
+	line-height: 16px;
+	margin: 0 0 8px;
+	font-size: 18px;
+	font-weight: 600;
+	letter-spacing: 6px;
+}
+
+.heading2 {
+	font-size: 40px;
+	line-height: 42px;
+	color: #1a1a23;
+	margin: 0px 0px 22px 0px;
+	font-weight: 600;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin-top:0;
+	font-family: 'Roboto', sans-serif;
+	text-transform:none;
+	font-weight:300;
+	color:#333;
+}
+
+h2 {margin:0 0 26px; line-height:40px; font-size:40px;}
+h2 b {font-weight:500;}
+
+#team {
+	padding:75px 0 100px;
+	background-image:url(../image/team_bg.jpg);
+	background-size:cover;
+	background-attachment:fixed !important;
+}
+
+.crewman_item {
+	position:relative;
+	margin:0 15px;
+}
+.crewman_item .crewman_descr {
+	position:absolute;
+	z-index:20;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	text-align:center;
+	opacity:0;
+	background-color:rgba(0,0,0,0.8);
+	transition: all 0.5s ease-in-out; 
+	-webkit-transition: all 0.5s ease-in-out;
+}
+.crewman_item:hover .crewman_descr {opacity:1;}
+.crewman_item .crewman_descr .crewman_descr_cont {
+	position:absolute;
+	left:0;
+	top:50%;
+	width:100%;
+	opacity:0;
+	transform:translateY(-100%);
+	-o-transform:translateY(-100%);
+	-ms-transform:translateY(-100%);
+	-webkit-transform:translateY(-100%);
+	transition: all 0.5s ease-in-out; 
+	-webkit-transition: all 0.5s ease-in-out;
+}
+.crewman_item:hover .crewman_descr .crewman_descr_cont {
+	opacity:1;
+	transform:translateY(-50%);
+	-o-transform:translateY(-50%);
+	-ms-transform:translateY(-50%);
+	-webkit-transform:translateY(-50%);
+}
+.crewman_item .crewman_descr p {
+	margin:0 0 6px;
+	font-weight:300;
+	line-height:24px;
+	font-size:24px;
+	color:#fff;
+}
+.crewman_item .crewman_descr span {
+	color:#666;
+}
+
+.crewman_item .crewman_social {
+	position:absolute;
+	z-index:30;
+	left:0;
+	bottom:0;
+	width:100%;
+	opacity:0;
+	text-align:center;
+	transition: bottom 0.5s ease-in-out, opacity 0.5s ease-in-out; 
+	-webkit-transition: bottom 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+.crewman_item .crewman_social a {
+	display:inline-block;
+	width:60px;
+	height:60px;
+	margin:0 7px 0 10px;
+	border:2px solid #333;
+	border-radius:50%;
+	line-height:58px;
+	font-size:26px;
+	color:#333;
+}
+.crewman_item:hover .crewman_social {
+	bottom:56px;
+	opacity:1;
+}
+.crewman_item .crewman_social a:hover {
+	color:#fff;
+	border-color:#fff;
+}
+
+#rate {
+	background-color:#fff;
+	padding:75px 0 100px;
+}
+
+hr {border-color:#ededed;}
+ul, ol {padding:0; margin:0;}
+li {padding:0; margin:0; list-style:none;}
+p {margin:0 0 20px;}
+a {color:#999; transition: all 0.3s ease-in-out; -webkit-transition: all 0.3s ease-in-out;}
+a:hover, a:focus {text-decoration:none; color:#333;}

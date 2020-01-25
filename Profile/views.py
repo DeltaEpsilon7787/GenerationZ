@@ -7,6 +7,6 @@ from Users.models import GenerationUser
 
 @login_required
 def profile_view(request):
-    return render(request, 'profile.html', {
+    return render(request, 'personalaccount.html', {
         'user': get_user(request),
     })

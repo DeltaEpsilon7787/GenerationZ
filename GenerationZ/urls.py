@@ -13,7 +13,9 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls import url
 from django.contrib import admin
+from django.shortcuts import render
 from django.urls import include, path, re_path
 from django_registration.backends.activation.views import RegistrationView
 
@@ -23,12 +25,17 @@ import Auth.views
 from Auth.forms import RegisterForm
 
 import Profile.views
+import HomePage.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    re_path(r'^auth/register/$', RegistrationView.as_view(form_class=RegisterForm), name='django_registration_register'),
-    re_path(r'^auth/', include('django_registration.backends.activation.urls')),
-    re_path(r'^auth/login/$', auth_views.LoginView.as_view(template_name='auth.html', )),
-    re_path(r'^auth/', include('django.contrib.auth.urls')),
-    re_path(r'^accounts/profile/$', Profile.views.profile_view),
+    re_path(r'^auth/register/success/$', lambda req: render(req, 'message.html'), name='django_registration_complete'),
+    re_path(r'^auth/register/$', RegistrationView.as_view(form_class=RegisterForm, template_name='register.html',
+                                                          success_url='/auth/register/success/')),
+    re_path(r'^auth/login/$', auth_views.LoginView.as_view(template_name='login.html')),
+    re_path(r'^auth/logout/$', auth_views.LogoutView.as_view(next_page='/')),
+    url(r'^auth/', include('django_registration.backends.activation.urls')),
+    url(r'^auth/', include('django.contrib.auth.urls')),
+    re_path(r'^profile/$', Profile.views.profile_view),
+    re_path(r'^$', HomePage.views.home_page_view)
 ]
