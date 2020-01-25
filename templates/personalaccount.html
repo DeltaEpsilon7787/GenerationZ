@@ -1,0 +1,164 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Generation Z</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"/>
+
+
+    <link rel="stylesheet" type="text/css" href={% static "css/reset.css" %}>
+    <link rel="stylesheet" type="text/css" href={% static "css/responsive.css" %}>
+
+    <link rel="stylesheet" href="http://bootstraptema.ru/plugins/2015/bootstrap3/bootstrap.min.css"/>
+
+    <script src="http://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="http://bootstraptema.ru/plugins/2015/b-v3-3-6/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="http://bootstraptema.ru/plugins/font-awesome/4-4-0/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href={% static "css/modal.css" %}>
+</head>
+
+<body>
+<header>
+    <div class="wrapper">
+        <a href="#"><img src={% static "img/logo.png" %} class="logo" width="75" height="75" alt="" titl=""/></a>
+        <a href="#" class="hamburger"></a>
+        <nav class="main_nav">
+            <div class="btn-group">
+                <button type="button" class="profile_btn" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                    Profile
+                </button>
+                <div class="dropdown-menu" class="profile_btn">
+                    <a class="dropdown-item" href="/">Main page</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/auth/logout">Exit</a>
+
+                </div>
+            </div>
+
+        </nav>
+    </div>
+</header>
+<section class="GenZ">
+
+    <div class="blur">
+        <div class="main_quest">
+            <div class="main">
+                <p style="text-align: center;">
+						<span style="color: #fff">
+							<strong>Это главная страница вашего профиля. Здесь собраны все этапы проекта.</strong>
+						</span>
+                </p>
+            </div>
+            <div class="progress">
+                <p>
+                    <strong>Срок выполнения задания:
+                        <span style="color: #fff;">
+								<span style="color: red;">30 мая – 25 июля</span>
+							</span>
+                    </strong>
+                </p>
+            </div>
+            <div class="questions">
+                <div>
+                    <div style="text-align: center;">
+                        <small style="color: #fff;"><h1>Задание 1</h1></small>
+                        <div>
+                            <div id="progressbar"
+                                 style="margin: 10px; background-color: black;border-radius: 13px;padding: 3px;">
+                                <div style="background-color: orange;width: 40%;height: 20px;border-radius: 10px;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div>
+                    <div><h2>Этапы</h2></div>
+                    <div>
+                        <h3><a class="question_btn" class="btn btn-default" data-toggle="modal" data-target="#question1"
+                               href="#" style="color: #fff; text-align: center;"><span>1.1 Концепция идентификации бренда</span></a>
+                        </h3>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section><!--  end hero section  -->
+
+
+<section class="listings">
+    <div class="wrapper">
+        <ul class="properties_list">
+            <li><h1>Тут будут завершенные/проваленные задания с прогрессбаром</h1></li>
+        </ul>
+    </div>
+</section>    <!--  end listing section  -->
+
+<footer>
+    <div class="wrapper footer">
+        <ul>
+            <li class="links">
+                <ul>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </li>
+
+            <li class="links">
+                <ul>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </li>
+
+            <li class="links">
+                <ul>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </li>
+
+            <li class="about">
+                <p>Welcome to the club buddy</p>
+                <ul>
+                    <li><a href="http://facebook.com/" class="facebook" target="_blank"></a></li>
+                    <li><a href="http://twitter.com/" class="twitter" target="_blank"></a></li>
+                    <li><a href="http://plus.google.com/" class="google" target="_blank"></a></li>
+                    <li><a href="#" class="skype"></a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="copyrights wrapper">
+        Copyright © 2019 <a href="http://natribu.org" target="_blank" class="ph_link" title="">Memes.com</a>. All Rights
+        Reserved.
+    </div>
+</footer><!--  end footer  -->
+
+<!-- Задания -->
+<div class="modal fade" id="question1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Задание 1</h4>
+            </div>
+            <div class="modal-body">
+                <p>Some text in the modal.</p>
+            </div>
+            <div class="modal-footer">
+                <form class="" method="post">
+                    <input type="" name="">
+                    <button type="submit" class="button_modal">Save changes</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

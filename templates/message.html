@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Registration</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href={% static "img/icons/favicon.png" %}/>
+	<link rel="stylesheet" type="text/css" href={% static "fonts/font-awesome-4.7.0/css/font-awesome.min.css" %}>
+	<link rel="stylesheet" type="text/css" href={% static "css/util.css" %}>
+	<link rel="stylesheet" type="text/css" href={% static "css/message.css" %}>
+	<link rel="stylesheet" href="http://bootstraptema.ru/plugins/2015/bootstrap3/bootstrap.min.css" />
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div>
+				<div>
+					<h2>
+To complete the registration, follow the link in the letter</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+
+	
+<!--===============================================================================================-->	
+	<script src={% static "js/jquery/jquery-3.2.1.min.js" %}></script>
+<!--===============================================================================================-->
+	<script src={% static "js/registration.js" %}></script>
+
+ 	<!-- Задания -->
+	<div class="modal fade" id="confirm_email" role="dialog">
+	    <div class="modal-dialog modal-dialog-centered">
+	    
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Задание 1</h4>
+	        </div>
+	        <div class="modal-body">
+	          <p>Some text in the modal.</p>
+	        </div>
+	        <div class="modal-footer">
+	        	<form class="" method = "post">
+		        	<input type="" name="">
+					<button type="submit" class="button_modal">Save changes</button>
+				</form>
+	        </div>
+	      </div>
+	      
+	    </div>
+	</div>
+</body>
+</html>
